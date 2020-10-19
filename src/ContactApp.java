@@ -41,6 +41,10 @@ public class ContactApp {
 
             } else if (userChoice == 3){
                 // TODO Add search functionality
+                String contactToFind = input.getString("Who are you looking for?");
+                Contact contactToPrint = list.getContactFromName(contactToFind);
+                contactToPrint.printContact();
+
 
             } else if (userChoice == 4){
                 // Get a contact name to delete
