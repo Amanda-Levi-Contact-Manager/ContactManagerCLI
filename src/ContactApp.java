@@ -23,12 +23,6 @@ public class ContactApp {
             list.addContact(contact);
         }
 
-//        list.printContactMap();
-
-        // TODO make a main loop that is able to control the UX
-//        printMenu();
-//        int userChoice = input.getInt("Enter an option (1, 2, 3, 4 or 5):");
-//        System.out.println("userChoice = " + userChoice);
         int userChoice;
 
         do{
@@ -37,22 +31,16 @@ public class ContactApp {
             System.out.println("userChoice = " + userChoice);
             if(userChoice == 1){
                 list.printContactMap();
-            }
-            if(userChoice == 2){
+            } else if (userChoice == 2){
                 String newContactName = input.getString("Who would you like to add?");
                 String newContactNumber = input.getString("What is their phone number?");
                 System.out.println("newContactNumber = " + newContactNumber);
                 System.out.println("newContactName = " + newContactName);
                 Contact newContact = new Contact(newContactName, newContactNumber);
                 list.addContact(newContact);
-
-
-
             }
 
         }while(userChoice < 5);
-
-
 
     }
 

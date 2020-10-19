@@ -9,7 +9,7 @@ public class Input {
 
     public String getString(String prompt){
         System.out.println(prompt);
-        return this.inputScan.next();
+        return this.inputScan.nextLine();
     }
 
     public int getInt(String prompt){
