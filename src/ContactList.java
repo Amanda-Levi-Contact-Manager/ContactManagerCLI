@@ -1,9 +1,11 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class ContactList {
 
-    // After further testing, wasn't sure we needed an actual arrayList
-    // Decided to simplify and just use a HashMap with names as the key, and contact objects as values
+    // Create a HashMap with names as the key, and contact objects as values
     private HashMap<String, Contact> contactList = new HashMap<>();
 
     public ContactList(Contact...contacts){
@@ -33,5 +35,15 @@ public class ContactList {
         }
         System.out.println("---------------------------------");
         System.out.println();
+    }
+
+    // The Files.Write method takes a List<String> in order to populate a file, so we need a list of Contact Strings
+    public List<String> exportMapToList(){
+        List<String> exportList = new ArrayList<>();
+        for (String key : contactList.keySet()){
+            String contactString = key + " | " + contactList.get(key).getPhoneNumber();
+            exportList.add(contactString);
+        }
+        return exportList;
     }
 }

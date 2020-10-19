@@ -1,3 +1,6 @@
-name1
-name2
-bacon
+Levi | 2222222
+David | 8675309
+Amanda | 5555555
+Tom Cruz | 894-856-8555
+Nancy Drew | 984-4856
+Jack Ryan | 555-6666
