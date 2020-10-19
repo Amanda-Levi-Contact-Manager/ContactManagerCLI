@@ -12,7 +12,7 @@ public class ContactApp {
 
     public static void main(String[] args) throws IOException {
         // Directory for contact output
-
+        Input input = new Input();
         // Methods for
         // Printing/Viewing, adding, searching, and updating/deleting a contact.
         // Hashmap <Name, contactObj or PhoneNumber>
@@ -23,22 +23,10 @@ public class ContactApp {
         Contact David = new Contact("David", "8675309");
 
         // Create our list HashMap with our contact objects
-        ContactList list = new ContactList(Amanda, Levi);
+        ContactList list = new ContactList(Amanda, Levi, David);
 
-        // See our output using 2 contacts
         list.printContactMap();
-
-        // Add a 3rd contact
-        list.addContact(David);
-
-        // Print again
-        list.printContactMap();
-
-        // Remove David
-        list.delContact(David);
-
-        // Print one last time
-        list.printContactMap();
+        System.out.println("list.exportMapToList() = " + list.exportMapToList());
 
         String directory = "data";
         String filename = "contacts.txt";
@@ -55,15 +43,19 @@ public class ContactApp {
         }
 
         //printing to contacts.txt
-        List<String> contactList = Arrays.asList("name1", "name2", "bacon");
-        Files.write(dataFile, contactList);
+//        List<String> contactList = Arrays.asList("name1", "name2", "bacon");
+        Files.write(dataFile, list.exportMapToList());
 
         //printing to console
         List<String> fileContents = Files.readAllLines(dataFile);
         for (int i = 0; i < fileContents.size(); i++) {
             System.out.printf("%d: %s\n", i + 1, fileContents.get(i));
         }
-    printMenu();
+
+        printMenu();
+        int userChoice = input.getInt("Enter an option (1, 2, 3, 4 or 5):");
+        System.out.println("userChoice = " + userChoice);
+
     }
 
     public static void printMenu(){
@@ -72,7 +64,7 @@ public class ContactApp {
         System.out.println("3. Search a contact by name.");
         System.out.println("4. Delete an existing contact.");
         System.out.println("5. Exit.");
-        System.out.println("Enter an option (1, 2, 3, 4 or 5):");
+//        System.out.println("Enter an option (1, 2, 3, 4 or 5):");
     }
 }
 
