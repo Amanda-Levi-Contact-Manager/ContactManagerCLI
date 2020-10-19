@@ -38,6 +38,20 @@ public class ContactApp {
                 System.out.println("newContactName = " + newContactName);
                 Contact newContact = new Contact(newContactName, newContactNumber);
                 list.addContact(newContact);
+
+            } else if (userChoice == 3){
+                // TODO Add search functionality
+
+            } else if (userChoice == 4){
+                // Get a contact name to delete
+                String contactToDelete = input.getString("Who would you like to remove?");
+
+                // Translate that name into its corresponding contact object
+                Contact contactObjectToDelete = list.getContactFromName(contactToDelete);
+
+                // Remove the contact object from our contactList HashMap
+                list.delContact(contactObjectToDelete);
+
             }
 
         }while(userChoice < 5);
