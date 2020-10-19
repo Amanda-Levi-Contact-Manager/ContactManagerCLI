@@ -23,12 +23,20 @@ public class ContactApp {
             list.addContact(contact);
         }
 
-        list.printContactMap();
+//        list.printContactMap();
 
         // TODO make a main loop that is able to control the UX
-        printMenu();
-        int userChoice = input.getInt("Enter an option (1, 2, 3, 4 or 5):");
-        System.out.println("userChoice = " + userChoice);
+//        printMenu();
+//        int userChoice = input.getInt("Enter an option (1, 2, 3, 4 or 5):");
+//        System.out.println("userChoice = " + userChoice);
+        int userChoice;
+
+        do{
+            printMenu();
+             userChoice = input.getInt("Enter an option (1, 2, 3, 4 or 5):");
+            System.out.println("userChoice = " + userChoice);
+        }while(userChoice < 5);
+
 
     }
 
