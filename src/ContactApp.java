@@ -60,6 +60,9 @@ public class ContactApp {
 
         }while(userChoice < 5);
 
+        FileIO.writeContactsToFile(filePath, list);
+        System.out.println("Contacts saved to disk.");
+
     }
 
     public static void printMenu(){

@@ -40,4 +40,8 @@ public class FileIO {
         return formattedContactList;
     }
 
+    public static void writeContactsToFile(Path contactFilePath, ContactList contacts) throws IOException {
+        Files.write(contactFilePath, contacts.exportMapToList());
+    }
+
 }
