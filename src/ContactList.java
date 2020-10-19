@@ -18,6 +18,16 @@ public class ContactList {
         contactList.put(newContact.getName(), newContact);
     }
 
+    public Contact getContactFromName(String contactName){
+        // TODO handle invalid name error
+//        if (contactList.containsKey(contactName)){
+            return contactList.get(contactName);
+//        } else {
+//            System.err.println("Contact name is invalid");
+////            return getContactFromName(contactName);
+//        }
+    }
+
     public void delContact(Contact rmContact){
         if (contactList.containsKey(rmContact.getName())){
             contactList.remove(rmContact.getName());
