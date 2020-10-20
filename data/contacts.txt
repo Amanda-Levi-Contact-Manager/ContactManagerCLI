@@ -1,5 +1,7 @@
+Fred Rogers | 123-4567
 Levi | 2222222
 David | 8675309
 Donald Duck | 987-6549
 Amanda | 5555555
 Mickey Mouse | 789-7896
+Roger Rabbit | 456-4646

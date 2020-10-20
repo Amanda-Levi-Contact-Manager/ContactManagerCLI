@@ -13,8 +13,6 @@ public class ContactApp {
         String filename = "contacts.txt";
 
         Path filePath = FileIO.createDirectoryAndFile(directory, filename);
-        System.out.println("filePath = " + filePath);
-        System.out.println();
 
         ContactList list = new ContactList();
         List<Contact> importedList = FileIO.importContactFile(filePath);
@@ -25,42 +23,55 @@ public class ContactApp {
 
         int userChoice;
 
+        System.out.print("---------------------------------------------------------------------\n" +
+                "   ___         _           _     __  __                             \n" +
+                "  / __|___ _ _| |_ __ _ __| |_  |  \\/  |__ _ _ _  __ _ __ _ ___ _ _ \n" +
+                " | (__/ _ | ' |  _/ _` / _|  _| | |\\/| / _` | ' \\/ _` / _` / -_| '_|\n" +
+                "  \\___\\___|_||_\\__\\__,_\\__|\\__| |_|  |_\\__,_|_||_\\__,_\\__, \\___|_|  \n" +
+                "                                                      |___/         \n");
+        System.out.println("---------------------------------------------------------------------\n");
+
         do{
             printMenu();
-             userChoice = input.getInt("Enter an option (1, 2, 3, 4 or 5):");
-            System.out.println("userChoice = " + userChoice);
+            userChoice = input.getInt("Enter an option (1, 2, 3, 4 or 5):");
+
             if(userChoice == 1){
                 list.printContactMap();
             } else if (userChoice == 2){
                 String newContactName = input.getString("Who would you like to add?");
-                String newContactNumber = input.getString("What is their phone number?");
-                System.out.println("newContactNumber = " + newContactNumber);
-                System.out.println("newContactName = " + newContactName);
+                String newContactNumber = input.getString("What is their phone number? (Numbers only)");
+                newContactNumber = Contact.formatPhoneNumber(newContactNumber);
                 Contact newContact = new Contact(newContactName, newContactNumber);
                 list.addContact(newContact);
+                System.out.println();
+                System.out.println("---------------------------------");
+                System.out.printf("%s added to contacts.%n", newContactName);
+                System.out.println("---------------------------------");
+                System.out.println();
+
 
             } else if (userChoice == 3){
-                // TODO Add search functionality
                 String contactToFind = input.getString("Who are you looking for?");
                 Contact contactToPrint = list.getContactFromName(contactToFind);
                 contactToPrint.printContact();
 
 
             } else if (userChoice == 4){
-                // Get a contact name to delete
                 String contactToDelete = input.getString("Who would you like to remove?");
-
-                // Translate that name into its corresponding contact object
                 Contact contactObjectToDelete = list.getContactFromName(contactToDelete);
-
-                // Remove the contact object from our contactList HashMap
                 list.delContact(contactObjectToDelete);
+                System.out.println();
+                System.out.println("---------------------------------");
+                System.out.printf("%s removed from contacts.%n", contactObjectToDelete.getName());
+                System.out.println("---------------------------------");
+                System.out.println();
 
             }
 
         }while(userChoice < 5);
 
         FileIO.writeContactsToFile(filePath, list);
+        System.out.println();
         System.out.println("Contacts saved to disk.");
 
     }
@@ -71,6 +82,7 @@ public class ContactApp {
         System.out.println("3. Search a contact by name.");
         System.out.println("4. Delete an existing contact.");
         System.out.println("5. Exit.");
+        System.out.println();
     }
 }
 
