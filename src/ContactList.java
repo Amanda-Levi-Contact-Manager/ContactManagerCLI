@@ -38,6 +38,7 @@ public class ContactList {
 
     public void printContactMap(){
         // %-15s = 15 character columns, - is left justified
+        System.out.println();
         System.out.printf("%-15s | %-15s%n", "Name", "Phone" );
         System.out.println("---------------------------------");
         for (String key : contactList.keySet()){

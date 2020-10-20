@@ -13,8 +13,6 @@ public class ContactApp {
         String filename = "contacts.txt";
 
         Path filePath = FileIO.createDirectoryAndFile(directory, filename);
-        System.out.println("filePath = " + filePath);
-        System.out.println();
 
         ContactList list = new ContactList();
         List<Contact> importedList = FileIO.importContactFile(filePath);
@@ -25,36 +23,38 @@ public class ContactApp {
 
         int userChoice;
 
+        System.out.println("---------- Contacts Manager ----------");
+        System.out.println();
+
         do{
             printMenu();
-             userChoice = input.getInt("Enter an option (1, 2, 3, 4 or 5):");
-            System.out.println("userChoice = " + userChoice);
+            userChoice = input.getInt("Enter an option (1, 2, 3, 4 or 5):");
+
             if(userChoice == 1){
                 list.printContactMap();
             } else if (userChoice == 2){
                 String newContactName = input.getString("Who would you like to add?");
                 String newContactNumber = input.getString("What is their phone number?");
-                System.out.println("newContactNumber = " + newContactNumber);
-                System.out.println("newContactName = " + newContactName);
                 Contact newContact = new Contact(newContactName, newContactNumber);
                 list.addContact(newContact);
+                System.out.printf("%s added to contacts.%n", newContactName);
+                System.out.println("---------------------------------");
+                System.out.println();
+
 
             } else if (userChoice == 3){
-                // TODO Add search functionality
                 String contactToFind = input.getString("Who are you looking for?");
                 Contact contactToPrint = list.getContactFromName(contactToFind);
                 contactToPrint.printContact();
 
 
             } else if (userChoice == 4){
-                // Get a contact name to delete
                 String contactToDelete = input.getString("Who would you like to remove?");
-
-                // Translate that name into its corresponding contact object
                 Contact contactObjectToDelete = list.getContactFromName(contactToDelete);
-
-                // Remove the contact object from our contactList HashMap
                 list.delContact(contactObjectToDelete);
+                System.out.printf("%s removed from contacts.%n", contactObjectToDelete.getName());
+                System.out.println("---------------------------------");
+                System.out.println();
 
             }
 

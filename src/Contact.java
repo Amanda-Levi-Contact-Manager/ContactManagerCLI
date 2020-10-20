@@ -24,6 +24,8 @@ public class Contact {
 
     public void printContact(){
         System.out.printf("%s  | \uD83D\uDCF1 %s |\n", this.name, this.phoneNumber);
+        System.out.println("---------------------------------");
+        System.out.println();
     }
 
 }
