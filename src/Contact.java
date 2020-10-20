@@ -23,9 +23,28 @@ public class Contact {
     }
 
     public void printContact(){
+
+        System.out.println();
+        System.out.println("---------------------------------");
         System.out.printf("%s  | \uD83D\uDCF1 %s |\n", this.name, this.phoneNumber);
         System.out.println("---------------------------------");
         System.out.println();
+    }
+
+    public static String formatPhoneNumber(String phoneNumber){
+
+        if (phoneNumber.length() == 7){
+            String firstSet = phoneNumber.substring(0, 3);
+            String secondSet = phoneNumber.substring(3);
+            return String.format("%s-%s", firstSet, secondSet);
+        } else if (phoneNumber.length() == 10) {
+            String areaSet = phoneNumber.substring(0, 3);
+            String firstSet = phoneNumber.substring(3, 6);
+            String secondSet = phoneNumber.substring(6);
+            return String.format("%s-%s-%s", areaSet, firstSet, secondSet);
+        } else {
+            return phoneNumber;
+        }
     }
 
 }
